@@ -71,11 +71,14 @@ function Banner() {
         className={visible ? "visible" : ""}
         onLoad={onImageLoad}
       />
-      <BannerText className={visible ? "visible" : ""}>
-        <Title>Chez vous, partout et ailleurs</Title>
-      </BannerText>
+      {pathname !== "/about" && (
+        <BannerText className={visible ? "visible" : ""}>
+          <Title>Chez vous, partout et ailleurs</Title>
+        </BannerText>
+      )}
     </BannerContainer>
   );
 }
+
 
 export default Banner;
