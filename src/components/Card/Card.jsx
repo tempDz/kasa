@@ -9,6 +9,24 @@ const StyledCard = styled.div`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: appear 0.5s ease-in-out forwards;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 const Cover = styled.img`

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Card from '../Card/Card';
 import data from '../../Data/Data';
 
-// Définition du conteneur de la galerie
 const GalleryContainer = styled.div`
   position: relative;
   width: 90%;
@@ -18,20 +17,23 @@ const GalleryContainer = styled.div`
 `;
 
 function Gallery() {
-  // Définition du state "listings" qui va contenir les données de notre galerie
   const [listings, setListings] = useState([]);
+  const [showCards, setShowCards] = useState(false);
 
   useEffect(() => {
-    // Récupération des données depuis le fichier "Data.js" grâce à l'import
     setListings(data);
+    setShowCards(true);
   }, []);
 
   return (
     <GalleryContainer>
-      {/* Utilisation de la méthode "map" pour boucler sur le tableau "listings" */}
-      {/* et afficher une carte pour chaque élément */}
       {listings.map((listing, index) => (
-         <Card key={listing.id} listing={listing} />
+        <Card
+          key={listing.id}
+          listing={listing}
+          show={showCards}
+          delay={index * 100}
+        />
       ))}
     </GalleryContainer>
   );
