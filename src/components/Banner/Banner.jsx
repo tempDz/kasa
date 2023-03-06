@@ -12,7 +12,6 @@ const BannerContainer = styled.div`
   max-width: 1240px;
   height: 25vh;
   margin: 50px auto;
-  background-color: black;
   border-radius: 25px;
   overflow: hidden;
   position: relative;
@@ -22,21 +21,27 @@ const BannerImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.8;
+  filter: brightness(50%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  &.visible {
+    opacity: 0.8;
+  }
 `;
 
 const BannerText = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: fit-content;
-  max-width: 80%;
-  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+  &.visible {
+    transform: translateY(0);
+  }
 `;
 
 const Title = styled.h1`
@@ -53,10 +58,20 @@ const Title = styled.h1`
 function Banner() {
   const { pathname } = useLocation();
   const bannerImage = pathname === "/" ? banner : about;
+  const [visible, setVisible] = React.useState(false);
+  const onImageLoad = React.useCallback(() => {
+    setVisible(true);
+  }, []);
+
   return (
     <BannerContainer>
-      <BannerImage src={bannerImage} alt="Banner" />
-      <BannerText>
+      <BannerImage
+        src={bannerImage}
+        alt="Banner"
+        className={visible ? "visible" : ""}
+        onLoad={onImageLoad}
+      />
+      <BannerText className={visible ? "visible" : ""}>
         <Title>Chez vous, partout et ailleurs</Title>
       </BannerText>
     </BannerContainer>
