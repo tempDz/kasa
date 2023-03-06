@@ -1,6 +1,8 @@
 import React from "react";
-import banner from '../../assets/banner.png';
-import styled from 'styled-components';
+import styled from "styled-components";
+import banner from "../../assets/banner.png";
+import about from "../../assets/about.png";
+import { useLocation } from "react-router-dom";
 
 const BannerContainer = styled.div`
   display: flex;
@@ -8,7 +10,7 @@ const BannerContainer = styled.div`
   align-items: center;
   width: 90%;
   max-width: 1240px;
-  height: 50vh;
+  height: 25vh;
   margin: 50px auto;
   background-color: black;
   border-radius: 25px;
@@ -38,22 +40,22 @@ const BannerText = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   font-size: min(4vw, 48px);
   line-height: 142.6%;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0;
   white-space: nowrap;
 `;
 
-
-
 function Banner() {
+  const { pathname } = useLocation();
+  const bannerImage = pathname === "/" ? banner : about;
   return (
     <BannerContainer>
-      <BannerImage src={banner} alt="Banner" />
+      <BannerImage src={bannerImage} alt="Banner" />
       <BannerText>
         <Title>Chez vous, partout et ailleurs</Title>
       </BannerText>

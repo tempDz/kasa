@@ -1,8 +1,6 @@
-// Importation de React et styled-components
 import React from "react";
 import styled from "styled-components";
 
-// Création d'un composant StyledCard qui est un div stylisé avec plusieurs propriétés CSS
 const StyledCard = styled.div`
   height: 320px;
   flex-grow: 1;
@@ -13,7 +11,6 @@ const StyledCard = styled.div`
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 `;
 
-// Création d'un composant Cover qui est une image stylisée avec plusieurs propriétés CSS
 const Cover = styled.img`
   position: absolute;
   top: 0;
@@ -23,13 +20,11 @@ const Cover = styled.img`
   object-fit: cover;
   transition: transform 0.3s ease-in-out;
 
-  // Utilisation de l'interpolation de chaînes pour appliquer un effet de zoom sur l'image lorsqu'on survole la carte
   ${StyledCard}:hover & {
     transform: scale(1.05);
   }
 `;
 
-// Création d'un composant Overlay qui est un div stylisé pour créer un effet de dégradé sombre sur l'image
 const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -43,7 +38,6 @@ const Overlay = styled.div`
   );
 `;
 
-// Création d'un composant Title qui est un div stylisé pour afficher le titre de la carte
 const Title = styled.div`
   position: absolute;
   left: 5.88%;
@@ -55,31 +49,24 @@ const Title = styled.div`
   font-weight: 540;
   font-size: 18px;
   line-height: 142.6%;
-  /* or 26px */
   display: flex;
   align-items: flex-end;
   color: #ffffff;
 `;
 
-// Création du composant Card qui prend en paramètre une propriété listing
 function Card({ listing }) {
-  // On extrait le titre, l'image de couverture et les autres images de l'hébergement de la propriété listing
   const { title, cover, pictures } = listing;
 
-  // On retourne un composant StyledCard avec les composants Cover, Overlay et Title à l'intérieur, ainsi que les autres images de l'hébergement
   return (
     <StyledCard>
       <Cover src={cover} alt={title} />
       <Overlay />
       <Title>{title}</Title>
-      {/* La méthode "slice(1)" exclut la première image de l'array "pictures". La méthode "map" itère sur chaque élément de l'array résultant et crée un élément "img" pour chaque image. */}
       {pictures.slice(1).map((picture, index) => (
-        // La source de chaque élément "img" est égale à l'élément actuel de l'array "pictures", et une clé unique est assignée à chaque élément "img" pour faciliter la mise à jour dynamique de l'interface utilisateur.
-        <img key={index} src={picture} />
+        <img key={index} src={picture} alt={title} />
       ))}
     </StyledCard>
   );
 }
 
-// Exportation du composant Card pour pouvoir l'utiliser dans d'autres fichiers
 export default Card;

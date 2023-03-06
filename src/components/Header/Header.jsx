@@ -1,42 +1,39 @@
 import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/LOGO.svg';
 
 const StyledHeader = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  // position: absolute;
-  width: 100%;
-  height: 68px;
-  left: 0;
-  top: 40px;
-  margin: 30px 0;
+  justify-content: center;
+  align-items: flex-end;
+  height: 120px;
+  max-width: 1240px;
+  margin: 0 auto;
 `;
 
 const Logo = styled.img`
   height: 68px;
-  margin-left: 4%;
+  margin-right: auto;
+  margin-left: 20px;
 `;
 
 const Nav = styled.nav`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  width: 50%;
-  height: 34px;
-  margin-right: 4%;
   margin-left: auto;
+  max-width: calc(100% - 88px);
 `;
 
 const NavLinks = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  width: 100%;
+  margin-left: 40px;
 `;
 
-const Link = styled.a`
+const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: #FF6060;
   font-family: 'Montserrat';
@@ -48,27 +45,44 @@ const Link = styled.a`
   align-items: center;
   text-align: right;
   margin-right: 20px;
+
   &:hover {
+    text-decoration-line: underline;
+  }
+
+  &.active {
     text-decoration-line: underline;
   }
 `;
 
-const Accueil = styled(Link)`
+const Accueil = styled(StyledLink)`
   margin-right: 40px;
 `;
 
-const APropos = styled(Link)`
+const APropos = styled(StyledLink)`
   white-space: nowrap;
 `;
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
     <StyledHeader>
       <Logo src={logo} alt="Logo" />
       <Nav>
         <NavLinks>
-          <Accueil href="/">Accueil</Accueil>
-          <APropos href="/a-propos">A propos</APropos>
+          <Accueil to="/">
+            Accueil
+          </Accueil>
+          <APropos
+            to="/about"
+            onClick={(event) => {
+              event.preventDefault();
+              navigate('/about');
+            }}
+          >
+            A propos
+          </APropos>
         </NavLinks>
       </Nav>
     </StyledHeader>

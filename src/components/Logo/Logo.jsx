@@ -4,7 +4,6 @@ import logo from '../../assets/LOGO.svg';
 
 const StyledLogo = styled.img`
   height: 68px;
-  margin-left: 4%;
 `;
 
 function Logo() {
