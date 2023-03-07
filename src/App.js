@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
+import FicheLogement from './pages/Fiche Logement/FicheLogement';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/fiche-logement" element={<FicheLogement />} />
         </Routes>
         <Footer />
       </Router>
