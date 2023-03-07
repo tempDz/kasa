@@ -5,12 +5,16 @@ import arrowImage from "../../assets/fleche.png";
 const AccordionContainer = styled.div`
   max-width: 1023px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const AccordionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+  width: 100%;
 `;
 
 const AccordionHeader = styled.div`
@@ -23,16 +27,27 @@ const AccordionHeader = styled.div`
   color: #ffffff;
   font-weight: bold;
   font-size: 16px;
-  justify-content: flex-end;
+  justify-content: space-between;
   cursor: pointer;
+`;
 
-  &:before {
-    content: url(${arrowImage});
-    display: inline-block;
-    margin-left: 10px; /* Modification de margin-right à margin-left */
-    transform: ${props => props.isOpen ? 'rotate(0deg)' : 'rotate(-180deg)'};
-    transition: transform 0.3s ease-in-out;
-  }
+const Title = styled.div`
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 142.6%;
+`;
+
+const Text = styled.p`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 142.6%;
+  color: #FF6060;
 `;
 
 
@@ -54,10 +69,11 @@ function Accordion({ title, children }) {
     <AccordionContainer>
       <AccordionWrapper>
         <AccordionHeader isOpen={isOpen} onClick={toggleAccordion}>
-          {title}
+          <Title>{title}</Title>
+          <img src={arrowImage} alt="flèche" style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(-180deg)', transition: 'transform 0.3s ease-in-out' }} />
         </AccordionHeader>
         <AccordionContent isOpen={isOpen}>
-          {children}
+          <Text>{children}</Text>
         </AccordionContent>
       </AccordionWrapper>
     </AccordionContainer>
