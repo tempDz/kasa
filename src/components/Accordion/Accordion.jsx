@@ -13,8 +13,8 @@ const AccordionContainer = styled.div`
 const AccordionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
-  width: 100%;
+  margin: 10px 0 20px 0;
+  width: 90%;
 `;
 
 const AccordionHeader = styled.div`
@@ -70,7 +70,7 @@ function Accordion({ title, children }) {
       <AccordionWrapper>
         <AccordionHeader isOpen={isOpen} onClick={toggleAccordion}>
           <Title>{title}</Title>
-          <img src={arrowImage} alt="flèche" style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(-180deg)', transition: 'transform 0.3s ease-in-out' }} />
+          <img src={arrowImage} alt="flèche" style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(-180deg)', transition: 'transform 0.2s ease-in-out' }} />
         </AccordionHeader>
         <AccordionContent isOpen={isOpen}>
           <Text>{children}</Text>
