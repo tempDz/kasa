@@ -1,14 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import arrowImage from "../../assets/fleche.png";
 
-const AccordionContainer = styled.div`
-  max-width: 1023px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const AccordionWrapper = styled.div`
   display: flex;
@@ -50,33 +43,46 @@ const Text = styled.p`
   color: #FF6060;
 `;
 
-
 const AccordionContent = styled.div`
-  padding: 20px;
+  padding: 0 20px;
   border-radius: 5px;
   background-color: #f7f7f7;
-  display: ${props => props.isOpen ? 'block' : 'none'};
+  overflow: hidden;
+  max-height: ${props => props.maxHeight}px;
+  transition: max-height 0.3s ease-out;
+  ${props => !props.isOpen && `
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+  `}
 `;
+
+
 
 function Accordion({ title, children }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [maxHeight, setMaxHeight] = useState(0);
+  const contentRef = useRef(null);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    if (contentRef.current) {
+      setMaxHeight(contentRef.current.scrollHeight);
+    }
+  }, [isOpen]);
+
   return (
-    <AccordionContainer>
       <AccordionWrapper>
         <AccordionHeader isOpen={isOpen} onClick={toggleAccordion}>
           <Title>{title}</Title>
           <img src={arrowImage} alt="flèche" style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(-180deg)', transition: 'transform 0.2s ease-in-out' }} />
         </AccordionHeader>
-        <AccordionContent isOpen={isOpen}>
+        <AccordionContent isOpen={isOpen} maxHeight={maxHeight} ref={contentRef}>
           <Text>{children}</Text>
         </AccordionContent>
       </AccordionWrapper>
-    </AccordionContainer>
   );
 }
 
