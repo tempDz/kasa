@@ -4,15 +4,23 @@ import arrowImage from '../../assets/fleche carousel.png';
 import Data from '../../Data/Data';
 
 const CarouselContainer = styled.div`
-  width: 1240px;
+  height: 950px;
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 30px;
+`;
+
+const CarouselImageContainer = styled.div`
   height: 415px;
   border-radius: 25px;
   overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
   position: relative;
 `;
+
 
 const CarouselArrowContainer = styled.div`
   display: flex;
@@ -64,6 +72,16 @@ const CarouselImage = styled.img`
   margin: auto;
 `;
 
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+`;
+
 function Carousel(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -101,17 +119,22 @@ function Carousel(props) {
 
   return (
     <CarouselContainer>
-      {images.map((image, index) => (
-        <CarouselImage
-          key={index}
-          src={image}
-          isActive={index === currentIndex}
-        />
-      ))}
+      <CarouselImageContainer>
+        {images.map((image, index) => (
+          <CarouselImage
+            key={index}
+            src={image}
+            isActive={index === currentIndex}
+          />
+        ))}
+      </CarouselImageContainer>
       <CarouselArrowContainer>
         <CarouselArrowLeft onClick={handleClickPrev} />
         <CarouselArrowRight onClick={handleClickNext} />
       </CarouselArrowContainer>
+      <TitleContainer>
+        <h1>Salut</h1>
+      </TitleContainer>
     </CarouselContainer>
   );
 }
