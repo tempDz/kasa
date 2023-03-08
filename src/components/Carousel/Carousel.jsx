@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-
 import styled from "styled-components";
 import arrowImage from '../../assets/fleche carousel.png';
-
-const images = [  "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg",  "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-2.jpg",  "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-3.jpg",  "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-4.jpg",  "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-5.jpg"];
+import Data from '../../Data/Data';
 
 const CarouselContainer = styled.div`
   width: 1240px;
@@ -66,16 +64,17 @@ const CarouselImage = styled.img`
   margin: auto;
 `;
 
-
-
-function Carousel() {
+function Carousel(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false); // ajout de l'état isAnimating
+  const [isAnimating, setIsAnimating] = useState(false);
   const timeoutRef = useRef(null);
+
+  const apartment = Data.find(item => item.id === props.apartmentId);
+  const images = apartment.pictures;
 
   const handleClickPrev = () => {
     if (!isAnimating) {
-      setIsAnimating(true); // mettre isAnimating à true avant de changer l'index
+      setIsAnimating(true);
       setCurrentIndex(prevIndex =>
         prevIndex === 0 ? images.length - 1 : prevIndex - 1
       );
@@ -84,7 +83,7 @@ function Carousel() {
 
   const handleClickNext = () => {
     if (!isAnimating) {
-      setIsAnimating(true); // mettre isAnimating à true avant de changer l'index
+      setIsAnimating(true);
       setCurrentIndex(prevIndex =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
@@ -96,7 +95,7 @@ function Carousel() {
       clearTimeout(timeoutRef.current);
     }
     timeoutRef.current = setTimeout(() => {
-      setIsAnimating(false); // réinitialiser isAnimating à false après la transition
+      setIsAnimating(false);
     }, 500);
   }, [currentIndex]);
 
@@ -116,6 +115,5 @@ function Carousel() {
     </CarouselContainer>
   );
 }
-
 
 export default Carousel;
