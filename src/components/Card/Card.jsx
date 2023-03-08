@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate  } from "react-router-dom";
 
 const StyledCard = styled.div`
   height: 320px;
@@ -73,10 +74,15 @@ const Title = styled.div`
 `;
 
 function Card({ listing }) {
-  const { title, cover, pictures } = listing;
+  const { title, cover, pictures, id } = listing;
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/fiche-logement?id=${id}`);
+  };
 
   return (
-    <StyledCard>
+    <StyledCard onClick={handleCardClick}>
       <Cover src={cover} alt={title} />
       <Overlay />
       <Title>{title}</Title>
@@ -86,5 +92,7 @@ function Card({ listing }) {
     </StyledCard>
   );
 }
+
+
 
 export default Card;
