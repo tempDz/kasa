@@ -4,7 +4,7 @@ import arrowImage from '../../assets/fleche carousel.png';
 import Data from '../../Data/Data';
 
 const CarouselContainer = styled.div`
-  height: 950px;
+  height: 750px;
   max-width: 1240px;
   margin: 0 auto;
   position: relative;
@@ -21,7 +21,6 @@ const CarouselImageContainer = styled.div`
   position: relative;
 `;
 
-
 const CarouselArrowContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -34,6 +33,7 @@ const CarouselArrowContainer = styled.div`
   margin: auto;
   z-index: 1;
 `;
+
 
 const CarouselArrow = styled.div`
   color: white;
@@ -127,14 +127,12 @@ function Carousel(props) {
             isActive={index === currentIndex}
           />
         ))}
+        <CarouselArrowContainer>
+          <CarouselArrowLeft onClick={handleClickPrev} />
+          <CarouselArrowRight onClick={handleClickNext} />
+        </CarouselArrowContainer>
       </CarouselImageContainer>
-      <CarouselArrowContainer>
-        <CarouselArrowLeft onClick={handleClickPrev} />
-        <CarouselArrowRight onClick={handleClickNext} />
-      </CarouselArrowContainer>
-      <TitleContainer>
-        <h1>Salut</h1>
-      </TitleContainer>
+      <TitleContainer>Salut</TitleContainer>
     </CarouselContainer>
   );
 }
