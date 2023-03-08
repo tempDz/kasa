@@ -4,7 +4,7 @@ import arrowImage from '../../assets/fleche carousel.png';
 import Data from '../../Data/Data';
 
 const CarouselContainer = styled.div`
-  height: 750px;
+  height: 550px;
   max-width: 1240px;
   margin: 0 auto;
   position: relative;
@@ -72,14 +72,75 @@ const CarouselImage = styled.img`
   margin: auto;
 `;
 
-const TitleContainer = styled.div`
+const InfoContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: #fff;
   font-size: 20px;
   font-weight: bold;
+`;
+
+const InfoLogement = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 0 20px 0;
+`;
+
+const TagsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+const Tag = styled.div`
+  background-color: #f1f1f1;
+  color: #555;
+  padding: 5px 15px;
+  margin: 5px;
+  border-radius: 20px;
+`;
+
+const RateLogement = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 20px 0;
+`;
+
+const NameContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Name = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+`;
+
+const Picture = styled.img`
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  margin-left: 20px;
+`;
+
+const RatingContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Rating = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
 `;
 
 function Carousel(props) {
@@ -132,7 +193,27 @@ function Carousel(props) {
           <CarouselArrowRight onClick={handleClickNext} />
         </CarouselArrowContainer>
       </CarouselImageContainer>
-      <TitleContainer>Salut</TitleContainer>
+      <InfoContainer>
+        <InfoLogement>
+          <div>{apartment.title}</div>
+          <div>{apartment.location}</div>
+          <TagsContainer>
+            {apartment.tags.map((tag, index) => (
+              <Tag key={index}>{tag}</Tag>
+            ))}
+          </TagsContainer>
+        </InfoLogement>
+        <RateLogement>
+          <NameContainer>
+            <Name>{apartment.host.name}</Name>
+            <Picture src={apartment.host.picture} alt={apartment.host.name} />            
+          </NameContainer>
+          <RatingContainer>
+            <div>Rating:</div>
+            <Rating>{apartment.rating}</Rating>
+          </RatingContainer>
+        </RateLogement>
+      </InfoContainer>
     </CarouselContainer>
   );
 }
