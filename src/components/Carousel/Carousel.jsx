@@ -4,9 +4,10 @@ import arrowImage from '../../assets/fleche carousel.png';
 import star from '../../assets/star.png';
 import starGray from '../../assets/star_gray.png';
 import Data from '../../Data/Data';
+import Accordion from "../Accordion/Accordion";
 
 const CarouselContainer = styled.div`
-  height: 550px;
+  min-height: 550px;
   width:90%;
   max-width: 1240px;
   margin: 30px auto;
@@ -146,12 +147,6 @@ const RatingContainer = styled.div`
   align-items: center;
 `;
 
-// const Rating = styled.div`
-//   font-size: 24px;
-//   font-weight: bold;
-//   margin-left: 10px;
-// `;
-
 const Rating = ({ rating }) => {
   const fullStars = Math.floor(rating);
   const emptyStars = 5 - fullStars;
@@ -168,6 +163,12 @@ const Rating = ({ rating }) => {
   );
 };
 
+const AccordionContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+`;
+const accordionWidths = [45];
 
 function Carousel(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -242,7 +243,23 @@ function Carousel(props) {
             <Rating rating={apartment.rating} />
           </RatingContainer>
         </RateLogement>
-      </InfoContainer>
+            </InfoContainer>
+            <AccordionContainer>
+        <Accordion title="Fiabilité" width={accordionWidths[0]}>
+            <p>
+              Les annonces postées sur Kasa garantissent une fiabilité totale.
+              Les photos sont conformes aux logements, et toutes les
+              informations sont régulièrement vérifiées par nos équipes.
+            </p>
+            </Accordion>
+          <Accordion title="Vente" width={accordionWidths[0]}>
+            <p>
+              La bienveillance fait partie des valeurs fondatrices de Kasa.
+              Tout comportement discriminatoire ou de perturbation du
+              voisinage entraînera une exclusion de notre plateforme.
+            </p>
+          </Accordion>
+        </AccordionContainer>
     </CarouselContainer>
   );
 }
