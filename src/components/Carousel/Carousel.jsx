@@ -245,19 +245,15 @@ function Carousel(props) {
         </RateLogement>
             </InfoContainer>
             <AccordionContainer>
-        <Accordion title="Fiabilité" width={accordionWidths[0]}>
-            <p>
-              Les annonces postées sur Kasa garantissent une fiabilité totale.
-              Les photos sont conformes aux logements, et toutes les
-              informations sont régulièrement vérifiées par nos équipes.
+        <Accordion title="Description" width={accordionWidths[0]}>
+        <p>
+              {apartment.description}
             </p>
             </Accordion>
-          <Accordion title="Vente" width={accordionWidths[0]}>
-            <p>
-              La bienveillance fait partie des valeurs fondatrices de Kasa.
-              Tout comportement discriminatoire ou de perturbation du
-              voisinage entraînera une exclusion de notre plateforme.
-            </p>
+          <Accordion title="Équipements" width={accordionWidths[0]}>
+          {apartment.equipments.map((item, index) => (
+    <p key={index}>{item}</p>
+  ))}
           </Accordion>
         </AccordionContainer>
     </CarouselContainer>

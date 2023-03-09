@@ -19,13 +19,11 @@ const AccordionHeader = styled.div`
   border-radius: 5px;
   background-color: #ff6060;
   color: #ffffff;
-  font-weight: bold;
-  font-size: 16px;
   justify-content: space-between;
   cursor: pointer;
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
   display: flex;
   align-items: center;
   font-family: 'Montserrat';
@@ -33,14 +31,15 @@ const Title = styled.div`
   font-weight: 500;
   font-size: 24px;
   line-height: 142.6%;
+  margin:0;
 `;
 
 const Text = styled.p`
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 142.6%;
+  font-size: 16px;
+  line-height: 140%;
   color: #FF6060;
 `;
 
