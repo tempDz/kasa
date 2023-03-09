@@ -5,9 +5,9 @@ import Data from '../../Data/Data';
 
 const CarouselContainer = styled.div`
   height: 550px;
+  width:90%;
   max-width: 1240px;
-  margin: 0 auto;
-  position: relative;
+  margin: 30px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,22 +30,14 @@ const CarouselArrowContainer = styled.div`
   bottom: 0;
   left: 50px;
   right: 50px;
-  margin: auto;
-  z-index: 1;
 `;
 
 
 const CarouselArrow = styled.div`
-  color: white;
   height: 80px;
   width: 50px;
   cursor: pointer;
   background-image: url(${arrowImage});
-  background-repeat: no-repeat;
-  background-size: 50px 80px;
-  &:hover {
-    background-color: transparent;
-  }
 `;
 
 const CarouselArrowLeft = styled(CarouselArrow)`
@@ -59,25 +51,18 @@ const CarouselArrowRight = styled(CarouselArrow)`
 
 const CarouselImage = styled.img`
   height: 100%;
-  width: auto;
   min-width: 100%;
-  max-width: none;
   object-fit: cover;
   user-select: none;
   transition: opacity 0.5s ease-in-out;
   opacity: ${props => (props.isActive ? "1" : "0")};
   position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
 `;
 
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #fff;
-  font-size: 20px;
   font-weight: bold;
 `;
 
@@ -94,19 +79,18 @@ const InfoLogement = styled.div`
 `;
 
 const InfoTitreLogement = styled.div`
-  font-size: 36px;  
+  font-size: 36px;
+  padding-bottom:20px;
 `;
 
 const InfoDescriptifLogement= styled.div`
 font-size: 18px;
+padding-bottom:20px;
 `;
 
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
 `;
 
 const Tag = styled.div`
@@ -118,6 +102,7 @@ font-family: 'Montserrat';
   text-align: center;
   color: #FFFFFF;
   background: #FF6060;
+  Width:115px;
   border-radius: 10px;
   padding: 5px 10px;
   margin-right: 10px; 
