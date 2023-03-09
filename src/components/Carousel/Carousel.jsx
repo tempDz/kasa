@@ -86,6 +86,19 @@ const InfoLogement = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 20px 0 20px 0;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  color: #FF6060;
+  line-height: 142.6%;
+`;
+
+const InfoTitreLogement = styled.div`
+  font-size: 36px;  
+`;
+
+const InfoDescriptifLogement= styled.div`
+font-size: 18px;
 `;
 
 const TagsContainer = styled.div`
@@ -97,11 +110,17 @@ const TagsContainer = styled.div`
 `;
 
 const Tag = styled.div`
-  background-color: #f1f1f1;
-  color: #555;
-  padding: 5px 15px;
-  margin: 5px;
-  border-radius: 20px;
+font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 142.6%;
+  text-align: center;
+  color: #FFFFFF;
+  background: #FF6060;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-right: 10px; 
 `;
 
 const RateLogement = styled.div`
@@ -118,14 +137,17 @@ const NameContainer = styled.div`
 `;
 
 const Name = styled.div`
-  font-size: 24px;
-  font-weight: bold;
-  margin-left: 10px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 142.6%;
+  color: #FF6060;
 `;
 
 const Picture = styled.img`
-  height: 60px;
-  width: 60px;
+  width: 64px;
+  height: 64px;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid #ccc;
@@ -195,8 +217,12 @@ function Carousel(props) {
       </CarouselImageContainer>
       <InfoContainer>
         <InfoLogement>
+        <InfoTitreLogement>
           <div>{apartment.title}</div>
+          </InfoTitreLogement>
+          <InfoDescriptifLogement>
           <div>{apartment.location}</div>
+          </InfoDescriptifLogement>
           <TagsContainer>
             {apartment.tags.map((tag, index) => (
               <Tag key={index}>{tag}</Tag>
