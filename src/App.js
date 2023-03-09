@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import FicheLogement from './pages/Fiche Logement/FicheLogement';
+import Error404 from './pages/Error 404/Error404';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/fiche-logement" element={<FicheLogement />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </Router>
