@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import arrowImage from '../../assets/fleche carousel.png';
+import star from '../../assets/star.png';
+import starGray from '../../assets/star_gray.png';
 import Data from '../../Data/Data';
 
 const CarouselContainer = styled.div`
@@ -102,7 +104,7 @@ font-family: 'Montserrat';
   text-align: center;
   color: #FFFFFF;
   background: #FF6060;
-  Width:115px;
+  Width:auto;
   border-radius: 10px;
   padding: 5px 10px;
   margin-right: 10px; 
@@ -144,11 +146,28 @@ const RatingContainer = styled.div`
   align-items: center;
 `;
 
-const Rating = styled.div`
-  font-size: 24px;
-  font-weight: bold;
-  margin-left: 10px;
-`;
+// const Rating = styled.div`
+//   font-size: 24px;
+//   font-weight: bold;
+//   margin-left: 10px;
+// `;
+
+const Rating = ({ rating }) => {
+  const fullStars = Math.floor(rating);
+  const emptyStars = 5 - fullStars;
+
+  return (
+    <>
+      {[...Array(fullStars)].map((_, i) => (
+        <img key={i} src={star} alt="star" />
+      ))}
+      {[...Array(emptyStars)].map((_, i) => (
+        <img key={i} src={starGray} alt="empty star" />
+      ))}
+    </>
+  );
+};
+
 
 function Carousel(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -220,8 +239,7 @@ function Carousel(props) {
             <Picture src={apartment.host.picture} alt={apartment.host.name} />            
           </NameContainer>
           <RatingContainer>
-            <div>Rating:</div>
-            <Rating>{apartment.rating}</Rating>
+            <Rating rating={apartment.rating} />
           </RatingContainer>
         </RateLogement>
       </InfoContainer>
