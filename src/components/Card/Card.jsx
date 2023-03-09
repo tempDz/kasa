@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const StyledCard = styled.div`
   height: 320px;
@@ -73,7 +73,7 @@ const Title = styled.div`
   color: #ffffff;
 `;
 
-function Card({ listing }) {
+function Card({ listing, delay }) {
   const { title, cover, pictures, id } = listing;
   const navigate = useNavigate();
 
@@ -82,7 +82,7 @@ function Card({ listing }) {
   };
 
   return (
-    <StyledCard onClick={handleCardClick}>
+    <StyledCard style={{ animationDelay: `${delay}ms` }} onClick={handleCardClick}>
       <Cover src={cover} alt={title} />
       <Overlay />
       <Title>{title}</Title>
@@ -92,7 +92,5 @@ function Card({ listing }) {
     </StyledCard>
   );
 }
-
-
 
 export default Card;
