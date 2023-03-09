@@ -16,6 +16,7 @@ const Logo = styled.img`
   height: 68px;
   margin-right: auto;
   margin-left: 20px;
+  cursor: pointer;
 `;
 
 const Nav = styled.nav`
@@ -68,7 +69,7 @@ function Header() {
 
   return (
     <StyledHeader>
-      <Logo src={logo} alt="Logo" />
+      <Logo src={logo} alt="Logo" onClick={() => navigate('/')} />
       <Nav>
         <NavLinks>
           <Accueil to="/">

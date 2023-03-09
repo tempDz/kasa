@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/LOGO.svg';
 
-const StyledLogo = styled.img`
-  height: 68px;
-`;
+const StyledLogo = styled.img
 
 function Logo() {
   return (
-    <StyledLogo src={logo} alt="Logo" />
+    <Link to="/">
+      <StyledLogo src={logo} alt="Logo" />
+    </Link>
   );
 }
 
