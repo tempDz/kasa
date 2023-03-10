@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     margin: 0;
-    padding: 0;
+    padding:0;
     overflow-y: scroll;
   }
 `;
@@ -33,20 +33,12 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<>
-            <Home />
-            <Footer />
-          </>} />
-          <Route path="/about" element={<>
-            <About />
-            <Footer />
-          </>} />
-          <Route path="/fiche-logement" element={<>
-            <FicheLogement />
-            <Footer />
-          </>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/fiche-logement" element={<FicheLogement />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );

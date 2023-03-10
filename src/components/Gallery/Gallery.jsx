@@ -18,9 +18,11 @@ const GalleryContainer = styled.div`
 
 function Gallery() {
   const [listings, setListings] = useState([]);
+  const [showCards, setShowCards] = useState(false);
 
   useEffect(() => {
     setListings(data);
+    setShowCards(true);
   }, []);
 
   return (
@@ -29,7 +31,8 @@ function Gallery() {
         <Card
           key={listing.id}
           listing={listing}
-          delay={(index * 100) + 500}
+          show={showCards}
+          delay={index * 100}
         />
       ))}
     </GalleryContainer>
