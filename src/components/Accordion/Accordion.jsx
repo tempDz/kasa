@@ -34,7 +34,7 @@ const Title = styled.h2`
   margin:0;
 `;
 
-const Text = styled.p`
+const Text = styled.span`
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
