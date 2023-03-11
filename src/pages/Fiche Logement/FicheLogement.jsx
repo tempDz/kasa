@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation} from 'react-router-dom';
 import styled from "styled-components";
 import Carousel from '../../components/Carousel/Carousel';
 import star from '../../assets/star.png';
 import starGray from '../../assets/star_gray.png';
 import Accordion from "../../components/Accordion/Accordion";
 import Data from '../../Data/Data';
+import Error404 from "../../pages/Error 404/Error404";
 
-const FicheLogementContainer = styled.div`
+const FicheLogementContainer = styled.div`  
   display: flex;
   flex-direction: column;
   width:90%;
@@ -131,18 +132,19 @@ function FicheLogement() {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get("id");
-    const foundApartment = Data.find(item => item.id === id);
-    if (foundApartment) {
-      setApartment(foundApartment);
-    } else {
-      console.error(`Appartement avec l'ID ${id} non trouvé`);
+    if (!apartment) {
+      const foundApartment = Data.find(item => item.id === id);
+      if (foundApartment) {
+        setApartment(foundApartment);
+      } else {
+        console.error(`Appartement avec l'ID ${id} non trouvé`);
+      }
     }
-  }, [location.search]);
-
+  }, [location.search, apartment]);
+  
   if (!apartment) {
-    return <div>Loading...</div>;
+    return <Error404 />;
   }
-
   return (
     <>
       <Carousel apartmentId={apartment.id} />
@@ -185,6 +187,7 @@ function FicheLogement() {
     </>
   );
 }
+
 
 
 export default FicheLogement;
