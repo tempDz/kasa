@@ -1,14 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import arrowImage from "../../assets/fleche.png";
-import  { COLORS, STYLES } from '../../styles/styles';
+import { COLORS, STYLES } from '../../styles/styles';
 
 const AccordionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px 0 20px 0;
   width: ${props => props.width ? `${props.width}%` : '100%'};
-
 `;
 
 const AccordionHeader = styled.div`
@@ -21,6 +20,7 @@ const AccordionHeader = styled.div`
   color: ${COLORS.WHITE};
   justify-content: space-between;
   cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
 `;
 
 const Title = styled.h2`
@@ -39,7 +39,7 @@ const Text = styled.span`
   font-weight: ${STYLES.FONT_WEIGHT_MEDIUM};
   font-size: 16px;
   line-height: 140%;
-  color: ${COLORS.WHITE};
+  color: ${COLORS.RED};
 `;
 
 const AccordionContent = styled.div`
@@ -55,9 +55,7 @@ const AccordionContent = styled.div`
   `}
 `;
 
-
-
-function Accordion({ title, children, width  }) {
+function Accordion({ title, children, width }) {
   const [isOpen, setIsOpen] = useState(false);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentRef = useRef(null);
@@ -73,15 +71,15 @@ function Accordion({ title, children, width  }) {
   }, [isOpen]);
 
   return (
-      <AccordionWrapper width={width}>
-        <AccordionHeader isOpen={isOpen} onClick={toggleAccordion}>
-          <Title>{title}</Title>
-          <img src={arrowImage} alt="flèche" style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(-180deg)', transition: 'transform 0.2s ease-in-out' }} />
-        </AccordionHeader>
-        <AccordionContent isOpen={isOpen} maxHeight={maxHeight} ref={contentRef}>
-          <Text>{children}</Text>
-        </AccordionContent>
-      </AccordionWrapper>
+    <AccordionWrapper width={width}>
+      <AccordionHeader isOpen={isOpen} onClick={toggleAccordion}>
+        <Title>{title}</Title>
+        <img src={arrowImage} alt="flèche" style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(-180deg)', transition: 'transform 0.2s ease-in-out' }} />
+      </AccordionHeader>
+      <AccordionContent isOpen={isOpen} maxHeight={maxHeight} ref={contentRef}>
+        <Text>{children}</Text>
+      </AccordionContent>
+    </AccordionWrapper>
   );
 }
 
