@@ -105,13 +105,16 @@ function Carousel(props) {
             isActive={index === currentIndex}
           />
         ))}
-        <CarouselArrowContainer>
-          <CarouselArrowLeft onClick={handleClickPrev} />
-          <CarouselArrowRight onClick={handleClickNext} />
-        </CarouselArrowContainer>
+        {images.length > 1 && (
+          <CarouselArrowContainer>
+            <CarouselArrowLeft onClick={handleClickPrev} />
+            <CarouselArrowRight onClick={handleClickNext} />
+          </CarouselArrowContainer>
+        )}
       </CarouselImageContainer>
     </CarouselContainer>
   );
+  
 }
 
 export default Carousel;
