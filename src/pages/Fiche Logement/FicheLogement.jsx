@@ -132,6 +132,7 @@ function FicheLogement() {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get("id");
+    window.scrollTo(0, 0);
     if (!apartment) {
       const foundApartment = Data.find(item => item.id === id);
       if (foundApartment) {
