@@ -4,7 +4,6 @@ import arrowImage from '../../assets/fleche carousel.png';
 import Data from '../../Data/Data';
 
 const CarouselContainer = styled.div`
-  min-height: 550px;
   width:90%;
   max-width: 1240px;
   margin: 30px auto;
@@ -59,6 +58,23 @@ const CarouselImage = styled.img`
   position: absolute;
 `;
 
+const CounterContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+`;
+
+const CounterText = styled.span`
+font-family: 'Montserrat';
+font-weight: 500;
+font-size: 25px;
+Line height:25.67px;
+color: #FFFFFF;
+  z-index: 1;
+`;
 
 function Carousel(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -106,11 +122,16 @@ function Carousel(props) {
           />
         ))}
         {images.length > 1 && (
-          <CarouselArrowContainer>
-            <CarouselArrowLeft onClick={handleClickPrev} />
-            <CarouselArrowRight onClick={handleClickNext} />
-          </CarouselArrowContainer>
+  <CarouselArrowContainer>
+    <CarouselArrowLeft onClick={handleClickPrev} />
+    <CarouselArrowRight onClick={handleClickNext} />
+  </CarouselArrowContainer>
         )}
+        {images.length > 1 && (
+          <CounterContainer>
+    <CounterText>{currentIndex + 1}/{images.length}</CounterText>
+  </CounterContainer>
+  )}
       </CarouselImageContainer>
     </CarouselContainer>
   );
