@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import logoFooter from '../../assets/LOGO footer.png';
+import  { COLORS, STYLES } from '../../styles/styles';
 
 const FooterContainer = styled.div`
   height: 209px;
@@ -17,12 +18,12 @@ const Logo = styled.img`
 `;
 
 const Text = styled.p`
-  font-family: 'Montserrat';
-  font-weight: 500;
+  font-family: ${STYLES.FONT_FAMILY};
+  font-weight: ${STYLES.FONT_WEIGHT_BOLD};
   font-size: 24px;
   line-height: 34.22px;
   text-align: center;
-  color: #FFFFFF;
+  color: ${COLORS.WHITE};
   margin-top: 20px;
   margin-bottom: 20px;
 `;

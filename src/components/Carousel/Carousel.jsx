@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import arrowImage from '../../assets/fleche carousel.png';
 import Data from '../../Data/Data';
+import  { COLORS, STYLES } from '../../styles/styles';
 
 const CarouselContainer = styled.div`
   width:90%;
@@ -68,11 +69,11 @@ const CounterContainer = styled.div`
 `;
 
 const CounterText = styled.span`
-font-family: 'Montserrat';
-font-weight: 500;
+font-family: ${STYLES.FONT_FAMILY};
+font-weight: ${STYLES.FONT_WEIGHT_BOLD};
 font-size: 25px;
 Line height:25.67px;
-color: #FFFFFF;
+color: ${COLORS.WHITE};
   z-index: 1;
 `;
 

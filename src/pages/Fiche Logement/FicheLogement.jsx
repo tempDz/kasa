@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation} from 'react-router-dom';
+import React, { useState, useEffect } from 'react'; 
 import styled from "styled-components";
 import Carousel from '../../components/Carousel/Carousel';
 import star from '../../assets/star.png';
@@ -7,6 +6,7 @@ import starGray from '../../assets/star_gray.png';
 import Accordion from "../../components/Accordion/Accordion";
 import Data from '../../Data/Data';
 import Error404 from "../../pages/Error 404/Error404";
+import  { COLORS, STYLES } from '../../styles/styles';
 
 const FicheLogementContainer = styled.div`  
   display: flex;
@@ -28,10 +28,9 @@ const InfoLogement = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 20px 0 20px 0;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  color: #FF6060;
+  font-family: ${STYLES.FONT_FAMILY};
+  font-weight: ${STYLES.FONT_WEIGHT_BOLD};
+  color: ${COLORS.RED};
   line-height: 142.6%;
 `;
 
@@ -51,14 +50,13 @@ const TagsContainer = styled.div`
 `;
 
 const Tag = styled.div`
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
+  font-family: ${STYLES.FONT_FAMILY};
+  font-weight: ${STYLES.FONT_WEIGHT_BOLD};
   font-size: 14px;
   line-height: 142.6%;
   text-align: center;
   color: #FFFFFF;
-  background: #FF6060;
+  background: ${COLORS.RED};
   Width:auto;
   border-radius: 10px;
   padding: 5px 10px;
@@ -79,12 +77,12 @@ const NameContainer = styled.div`
 `;
 
 const Name = styled.div`
-  font-family: 'Montserrat';
+  font-family: ${STYLES.FONT_FAMILY};
   font-style: normal;
-  font-weight: 500;
+  font-weight: ${STYLES.FONT_WEIGHT_BOLD};
   font-size: 18px;
   line-height: 142.6%;
-  color: #FF6060;
+  color: ${COLORS.RED};
 `;
 
 const Picture = styled.img`
@@ -127,7 +125,6 @@ const accordionWidths = [45];
 
 function FicheLogement() {
   const [apartment, setApartment] = useState(null);
-  const location = useLocation();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);

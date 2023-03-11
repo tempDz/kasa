@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import  { COLORS, STYLES } from '../../styles/styles';
 
 const Container = styled.div`
   height: 700px;
@@ -8,9 +9,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  font-family: 'Montserrat';
-  font-style: normal;
-  color: #FF6060;
+  font-family: ${STYLES.FONT_FAMILY};
+  color: ${COLORS.RED};
 `;
 
 const Text = styled.h1`
@@ -20,7 +20,7 @@ const Text = styled.h1`
 `;
 
 const OopsMessage = styled.h2`
-  font-weight: 500;
+  font-weight: ${STYLES.FONT_WEIGHT_BOLD};
   font-size: 36px;
   line-height: 142.6%;
   align-items: flex-end;
@@ -31,9 +31,9 @@ const RetourAccueil = styled(Link)`
   font-size: 18px;
   line-height: 142.6%;
   margin-top: 150px;
-  color: #FF6060;
+  color: ${COLORS.RED};
   text-decoration: none;
-  border-bottom: 2px solid #FF6060;
+  border-bottom: 2px solid ${COLORS.RED};
 `;
 
 function Error404() {

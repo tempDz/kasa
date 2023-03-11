@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import arrowImage from "../../assets/fleche.png";
-
+import  { COLORS, STYLES } from '../../styles/styles';
 
 const AccordionWrapper = styled.div`
   display: flex;
@@ -17,8 +17,8 @@ const AccordionHeader = styled.div`
   height: 47px;
   padding: 0 20px;
   border-radius: 5px;
-  background-color: #ff6060;
-  color: #ffffff;
+  background-color: ${COLORS.RED};
+  color: ${COLORS.WHITE};
   justify-content: space-between;
   cursor: pointer;
 `;
@@ -26,21 +26,20 @@ const AccordionHeader = styled.div`
 const Title = styled.h2`
   display: flex;
   align-items: center;
-  font-family: 'Montserrat';
+  font-family: ${STYLES.FONT_FAMILY};
   font-style: normal;
-  font-weight: 500;
+  font-weight: ${STYLES.FONT_WEIGHT_BOLD};
   font-size: 24px;
   line-height: 142.6%;
   margin:0;
 `;
 
 const Text = styled.span`
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
+  font-family: ${STYLES.FONT_FAMILY};
+  font-weight: ${STYLES.FONT_WEIGHT_MEDIUM};
   font-size: 16px;
   line-height: 140%;
-  color: #FF6060;
+  color: ${COLORS.WHITE};
 `;
 
 const AccordionContent = styled.div`

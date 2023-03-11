@@ -3,6 +3,7 @@ import styled from "styled-components";
 import banner from "../../assets/banner.png";
 import about from "../../assets/about.png";
 import { useLocation } from "react-router-dom";
+import  { COLORS, STYLES } from '../../styles/styles';
 
 const BannerContainer = styled.div`
   display: flex;
@@ -45,9 +46,8 @@ const BannerText = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 500;
+  font-family: ${STYLES.FONT_FAMILY};
+  font-weight: ${STYLES.FONT_WEIGHT_BOLD};;
   font-size: min(4vw, 48px);
   line-height: 142.6%;
   color: #ffffff;
