@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const StyledCard = styled.div`
-  height: 320px;
+  height: 340px;
+  width: 340px
   flex-grow: 1;
   margin-bottom: 20px;
   position: relative;
@@ -27,6 +28,13 @@ const StyledCard = styled.div`
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 255px;
+    width: 335px;
+    justify-items: center;
+    margin: 0 auto;
   }
 `;
 
@@ -71,7 +79,12 @@ const Title = styled.div`
   display: flex;
   align-items: flex-end;
   color: #ffffff;
+
+  @media screen and (max-width: 480px) {
+    font-size: 18px;
+  }
 `;
+
 
 function Card({ listing, delay }) {
   const { title, cover, pictures, id } = listing;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+// import Header from './components/Header/Header';
+// import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import FicheLogement from './pages/Fiche Logement/FicheLogement';
@@ -31,14 +31,14 @@ function App() {
     <>
       <GlobalStyle />
       <Router>
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/fiche-logement" element={<FicheLogement />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </>
   );
