@@ -19,10 +19,12 @@ const BannerContainer = styled.div`
 
   @media screen and (max-width: 480px) {
     width: 335px;
-    height: 111px;
+    height: ${(props) => (props.pathname === "/about" ? "223px" : "111px")};
     border-radius: 10px;
-    justify-content: flex-start;
+    justify-content: ${(props) =>
+      props.pathname === "/about" ? "center" : "flex-start"};
   }
+  
 `;
 
 const BannerImage = styled.img`
@@ -81,7 +83,7 @@ function Banner() {
   }, []);
 
   return (
-    <BannerContainer>
+    <BannerContainer pathname={pathname}>
       <BannerImage
         src={bannerImage}
         alt="Banner"
@@ -96,5 +98,6 @@ function Banner() {
     </BannerContainer>
   );
 }
+
 
 export default Banner;
