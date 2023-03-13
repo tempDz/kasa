@@ -8,6 +8,8 @@ import Data from '../../Data/Data';
 import Error404 from "../../pages/Error 404/Error404";
 import  { COLORS, STYLES } from '../../styles/styles';
 
+const location = window.location;
+
 const FicheLogementContainer = styled.div`  
   display: flex;
   flex-direction: column;
@@ -21,6 +23,10 @@ const InfoContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   font-weight: bold;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    }
 `;
 
 const InfoLogement = styled.div`
@@ -32,16 +38,28 @@ const InfoLogement = styled.div`
   font-weight: ${STYLES.FONT_WEIGHT_BOLD};
   color: ${COLORS.RED};
   line-height: 142.6%;
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: 0;
+    }
 `;
 
 const InfoTitreLogement = styled.div`
   font-size: 36px;
   padding-bottom:20px;
+  
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+    }
 `;
 
 const InfoDescriptifLogement= styled.div`
   font-size: 18px;
   padding-bottom:20px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+    }
 `;
 
 const TagsContainer = styled.div`
@@ -50,18 +68,25 @@ const TagsContainer = styled.div`
 `;
 
 const Tag = styled.div`
+  display: flex;
+  align-items: center;
   font-family: ${STYLES.FONT_FAMILY};
   font-weight: ${STYLES.FONT_WEIGHT_BOLD};
   font-size: 14px;
   line-height: 142.6%;
-  text-align: center;
   color: #FFFFFF;
   background: ${COLORS.RED};
-  Width:auto;
   border-radius: 10px;
   padding: 5px 10px;
-  margin-right: 10px; 
+  margin-right: 10px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+    height: 18px;
+    border-radius: 5px;
+  }
 `;
+
 
 const RateLogement = styled.div`
   display: flex;
@@ -69,11 +94,16 @@ const RateLogement = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0 20px 0;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row-reverse;
+    }
 `;
 
 const NameContainer = styled.div`
   display: flex;
   align-items: center;
+
 `;
 
 const Name = styled.div`
@@ -83,6 +113,12 @@ const Name = styled.div`
   font-size: 18px;
   line-height: 142.6%;
   color: ${COLORS.RED};
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+    width: 63px;
+    text-align: end;
+    }
 `;
 
 const Picture = styled.img`
@@ -92,11 +128,29 @@ const Picture = styled.img`
   border-radius: 50%;
   border: 1px solid #ccc;
   margin-left: 20px;
+
+  @media screen and (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+    }
+
 `;
 
 const RatingContainer = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const StarImage = styled.img`
+  ${({ theme }) => `
+    width: 30px;
+    height: 30px;
+
+    @media screen and (max-width: 768px) {
+      width: 15px;
+      height: 15px;
+    }
+  `}
 `;
 
 const Rating = ({ rating }) => {
@@ -106,10 +160,19 @@ const Rating = ({ rating }) => {
   return (
     <>
       {[...Array(fullStars)].map((_, i) => (
-        <img key={i} src={star} alt="star" />
+        <StarImage
+          key={i}
+          src={star}
+          alt="star"
+        />
       ))}
       {[...Array(emptyStars)].map((_, i) => (
-        <img key={i} src={starGray} alt="empty star" />
+        <img
+          key={i}
+          src={starGray}
+          alt="empty star"
+          style={{ width: "30px", height: "30px" }}
+        />
       ))}
     </>
   );
@@ -147,7 +210,7 @@ function FicheLogement() {
     <>
       <Carousel apartmentId={apartment.id} />
       <FicheLogementContainer>
-      {/* <InfoContainer>
+      <InfoContainer>
         <InfoLogement>
           <InfoTitreLogement>
             <div>{apartment.title}</div>
@@ -170,7 +233,7 @@ function FicheLogement() {
             <Rating rating={apartment.rating} />
           </RatingContainer>
         </RateLogement>
-      </InfoContainer> */}
+      </InfoContainer>
       {/* <AccordionContainer>
         <Accordion title="Description" width={accordionWidths[0]}>
           <p>{apartment.description}</p>
