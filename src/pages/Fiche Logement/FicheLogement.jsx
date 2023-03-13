@@ -147,7 +147,7 @@ function FicheLogement() {
     <>
       <Carousel apartmentId={apartment.id} />
       <FicheLogementContainer>
-      <InfoContainer>
+      {/* <InfoContainer>
         <InfoLogement>
           <InfoTitreLogement>
             <div>{apartment.title}</div>
@@ -170,8 +170,8 @@ function FicheLogement() {
             <Rating rating={apartment.rating} />
           </RatingContainer>
         </RateLogement>
-      </InfoContainer>
-      <AccordionContainer>
+      </InfoContainer> */}
+      {/* <AccordionContainer>
         <Accordion title="Description" width={accordionWidths[0]}>
           <p>{apartment.description}</p>
         </Accordion>
@@ -180,7 +180,7 @@ function FicheLogement() {
             <p key={index}>{item}</p>
           ))}
         </Accordion>
-      </AccordionContainer>
+      </AccordionContainer> */}
       </FicheLogementContainer>
     </>
   );

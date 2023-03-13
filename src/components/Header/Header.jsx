@@ -15,6 +15,7 @@ margin:50px auto;
 @media screen and (max-width: 480px){
   padding:5%;
   min-width: 375px;
+  margin: 20px auto;
 }
 `;
 

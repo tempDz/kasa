@@ -38,7 +38,7 @@ function App() {
           <Route path="/fiche-logement" element={<FicheLogement />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     </>
   );

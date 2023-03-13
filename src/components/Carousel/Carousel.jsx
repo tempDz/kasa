@@ -11,7 +11,12 @@ const CarouselContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 30px;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    height: 255px;
+    }
+
 `;
 
 const CarouselImageContainer = styled.div`
@@ -19,6 +24,12 @@ const CarouselImageContainer = styled.div`
   border-radius: 25px;
   overflow: hidden;
   position: relative;
+
+  @media screen and (max-width: 768px) {
+    border-radius: 10px;
+    // width: 335px;
+    }
+
 `;
 
 const CarouselArrowContainer = styled.div`
@@ -30,6 +41,13 @@ const CarouselArrowContainer = styled.div`
   bottom: 0;
   left: 50px;
   right: 50px;
+
+  @media screen and (max-width: 768px) {
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 10px;
+  }
 `;
 
 
@@ -38,6 +56,13 @@ const CarouselArrow = styled.div`
   width: 50px;
   cursor: pointer;
   background-image: url(${arrowImage});
+
+  @media screen and (max-width: 768px) {
+    height: 25px;
+    width: 15px;
+    background-size: contain;
+  }
+
 `;
 
 const CarouselArrowLeft = styled(CarouselArrow)`
@@ -66,6 +91,10 @@ const CounterContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 25px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const CounterText = styled.span`

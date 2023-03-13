@@ -16,6 +16,7 @@ const GalleryContainer = styled.div`
   border-radius: 25px;
 
   @media screen and (max-width: 480px) {
+    margin: 22px auto;
     padding: 3%;
     grid-gap: 10px;
     min-width: 375px;
