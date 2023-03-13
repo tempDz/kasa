@@ -27,6 +27,10 @@ const Text = styled.p`
   color: ${COLORS.WHITE};
   margin-top: 20px;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 function Footer() {
