@@ -9,6 +9,10 @@ const AccordionContainer = styled.div`
   align-items: center;
   max-width: 1023px;
   margin: 0 auto 80px auto;
+
+  @media screen and (max-width: 480px) {
+    margin: 20px auto 40px auto;
+  }
 `;
 
 const accordionWidths = [90];

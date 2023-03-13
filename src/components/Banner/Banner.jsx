@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import banner from "../../assets/banner.png";
-import about from "../../assets/about.png";
+import about from "../../assets/about small.png";
 import { useLocation } from "react-router-dom";
 import { COLORS, STYLES } from '../../styles/styles';
 
@@ -16,6 +16,7 @@ const BannerContainer = styled.div`
   border-radius: 25px;
   overflow: hidden;
   position: relative;
+  background-color: rgba(0, 0, 0, 0.9);
 
   @media screen and (max-width: 480px) {
     width: 335px;
@@ -31,12 +32,13 @@ const BannerImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(50%);
+  // filter: brightness(40%);
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   &.visible {
     opacity: 0.8;
   }
+
 `;
 
 const BannerText = styled.div`
@@ -70,7 +72,6 @@ const Title = styled.h1`
 
   @media screen and (max-width: 480px) {
     font-size: 24px;
-    // padding-left: 5px;
   } 
 `;
 
