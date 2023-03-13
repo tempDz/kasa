@@ -1,67 +1,65 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/LOGO.svg';
+import { STYLES } from '../../styles/styles';
 
 const StyledHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 120px;
-  max-width: 1240px;
-  margin: 0 auto;
+width:90%;
+max-width:1240px;
+align-items: center;
+display: flex;
+justify-content: space-between;
+margin:50px auto;
+
+@media screen and (max-width: 480px){
+  padding:5%;
+  min-width: 375px;
+}
 `;
 
 const Logo = styled.img`
-  height: 68px;
-  margin-right: auto;
-  margin-left: 20px;
-  cursor: pointer;
+    align-items: flex-start;
+    display: flex;
+    margin: 0;
+    width: 9rem;
 `;
 
 const Nav = styled.nav`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-left: auto;
-  max-width: calc(100% - 88px);
-`;
+align-items: center;
+display: flex;
+justify-content: flex-end;
 
-const NavLinks = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 40px;
+@media screen and (max-width: 768px) {
+  text-transform: uppercase;
+}
+
 `;
 
 const StyledLink = styled(NavLink)`
-  text-decoration: none;
-  color: #FF6060;
-  font-family: 'Montserrat';
+  color: #ff6060;
+  font-family: ${STYLES.FONT_FAMILY};
+  font-size: 24px;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
   line-height: 142.6%;
-  display: flex;
-  align-items: center;
+  padding-left: 0.8rem;
   text-align: right;
-  margin-right: 20px;
-
-  &:hover {
-    text-decoration-line: underline;
-  }
-
-  &.active {
-    text-decoration-line: underline;
-  }
-`;
-
-const Accueil = styled(StyledLink)`
-  margin-right: 40px;
-`;
-
-const APropos = styled(StyledLink)`
+  text-decoration: none;
   white-space: nowrap;
+
+  &:not(:last-child) {
+    margin-right: 5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 function Header() {
@@ -71,11 +69,10 @@ function Header() {
     <StyledHeader>
       <Logo src={logo} alt="Logo" onClick={() => navigate('/')} />
       <Nav>
-        <NavLinks>
-          <Accueil to="/">
+          <StyledLink to="/">
             Accueil
-          </Accueil>
-          <APropos
+          </StyledLink>
+          <StyledLink
             to="/about"
             onClick={(event) => {
               event.preventDefault();
@@ -83,8 +80,7 @@ function Header() {
             }}
           >
             A propos
-          </APropos>
-        </NavLinks>
+          </StyledLink>
       </Nav>
     </StyledHeader>
   );

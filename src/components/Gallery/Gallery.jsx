@@ -18,7 +18,7 @@ const GalleryContainer = styled.div`
   @media screen and (max-width: 480px) {
     padding: 3%;
     grid-gap: 10px;
-    min-width: 355px;
+    min-width: 375px;
     background: transparent;
   }
 `;
