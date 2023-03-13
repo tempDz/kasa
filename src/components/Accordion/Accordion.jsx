@@ -21,6 +21,12 @@ const AccordionHeader = styled.div`
   justify-content: space-between;
   cursor: pointer;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+
+  @media screen and (max-width: 768px) {
+    height: 30px;
+    img {
+      width: 15px;
+  }
 `;
 
 const Title = styled.h2`
@@ -32,6 +38,10 @@ const Title = styled.h2`
   font-size: 24px;
   line-height: 142.6%;
   margin:0;
+
+  @media screen and (max-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 const Text = styled.span`

@@ -181,20 +181,29 @@ const Rating = ({ rating }) => {
 const AccordionContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
+  margin: 10px 0 50px 0;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    margin: 0 auto;
+  }
 `;
 
-const accordionWidths = [45];
+const accordionWidths = {
+  small: [100],
+  medium: [45],
+};
 
 function FicheLogement() {
   const [apartment, setApartment] = useState(null);
+  const [screenSize, setScreenSize] = useState("medium");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get("id");
     window.scrollTo(0, 0);
     if (!apartment) {
-      const foundApartment = Data.find(item => item.id === id);
+      const foundApartment = Data.find((item) => item.id === id);
       if (foundApartment) {
         setApartment(foundApartment);
       } else {
@@ -202,7 +211,19 @@ function FicheLogement() {
       }
     }
   }, [location.search, apartment]);
-  
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setScreenSize("small");
+      } else {
+        setScreenSize("medium");
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   if (!apartment) {
     return <Error404 />;
   }
@@ -210,45 +231,52 @@ function FicheLogement() {
     <>
       <Carousel apartmentId={apartment.id} />
       <FicheLogementContainer>
-      <InfoContainer>
-        <InfoLogement>
-          <InfoTitreLogement>
-            <div>{apartment.title}</div>
-          </InfoTitreLogement>
-          <InfoDescriptifLogement>
-            <div>{apartment.location}</div>
-          </InfoDescriptifLogement>
-          <TagsContainer>
-            {apartment.tags.map((tag, index) => (
-              <Tag key={index}>{tag}</Tag>
+        <InfoContainer>
+          <InfoLogement>
+            <InfoTitreLogement>
+              <div>{apartment.title}</div>
+            </InfoTitreLogement>
+            <InfoDescriptifLogement>
+              <div>{apartment.location}</div>
+            </InfoDescriptifLogement>
+            <TagsContainer>
+              {apartment.tags.map((tag, index) => (
+                <Tag key={index}>{tag}</Tag>
+              ))}
+            </TagsContainer>
+          </InfoLogement>
+          <RateLogement>
+            <NameContainer>
+              <Name>{apartment.host.name}</Name>
+              <Picture
+                src={apartment.host.picture}
+                alt={apartment.host.name}
+              />
+            </NameContainer>
+            <RatingContainer>
+              <Rating rating={apartment.rating} />
+            </RatingContainer>
+          </RateLogement>
+        </InfoContainer>
+        <AccordionContainer>
+          <Accordion
+            title="Description"
+            width={accordionWidths[screenSize][0]}
+          >
+            <p>{apartment.description}</p>
+          </Accordion>
+          <Accordion
+            title="Équipements"
+            width={accordionWidths[screenSize][0]}
+          >
+            {apartment.equipments.map((item, index) => (
+              <p key={index}>{item}</p>
             ))}
-          </TagsContainer>
-        </InfoLogement>
-        <RateLogement>
-          <NameContainer>
-            <Name>{apartment.host.name}</Name>
-            <Picture src={apartment.host.picture} alt={apartment.host.name} />
-          </NameContainer>
-          <RatingContainer>
-            <Rating rating={apartment.rating} />
-          </RatingContainer>
-        </RateLogement>
-      </InfoContainer>
-      {/* <AccordionContainer>
-        <Accordion title="Description" width={accordionWidths[0]}>
-          <p>{apartment.description}</p>
-        </Accordion>
-        <Accordion title="Équipements" width={accordionWidths[0]}>
-          {apartment.equipments.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
-        </Accordion>
-      </AccordionContainer> */}
+          </Accordion>
+        </AccordionContainer>
       </FicheLogementContainer>
     </>
   );
 }
-
-
 
 export default FicheLogement;
